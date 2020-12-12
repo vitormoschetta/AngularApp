@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-title>Edição de Produto</mat-card-title>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <input type="hidden" formControlName="id">
+
+        <mat-form-field>
+            <input matInput placeholder="Nome" formControlName="name">
+            <small *ngIf="submitted && frm.name.invalid">
+                <p class="alert">Nome deve conter no mínimo 4 caracteres.</p>
+            </small>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Preço (R$)" formControlName="price" type="number">
+            <small *ngIf="submitted && frm.price.invalid">
+                <p class="alert">Preço é requerido</p>
+            </small>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button class="button-edit" >
+            Concluir
+        </button>
+
+        <button mat-raised-button (click)="close()">
+            Fechar
+        </button>
+
+    </form>
+
+</mat-card>

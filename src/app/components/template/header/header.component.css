@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #3F51B5;
+    color: white;
+}
+
+.header a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header .logo {
+    max-height: 100px;
+}
+
+.header .title-group {
+    padding-left: 25px;    
+    align-items: flex-end;
+    text-align: end;
+}
+
+
+.header .title-group {
+    padding-right: 25px;
+    
+}
+
+.header .material-icons {
+    font-size: 50px;
+}
