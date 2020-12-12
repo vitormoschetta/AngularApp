@@ -7,23 +7,26 @@ ng new <app-name> --minimal
 
 ## New Component
 ```
-ng generate component components/produts/product-add
+ng generate component components/produt/product-create
 ```
 Abreviado:
 ```
-ng g c components/produts/product-add
+ng g c components/produt/product-create
 ```
 
 O comando acima cria um component com três arquivos no diretório conforme a baixo:
 ```
 app
   components
-     products
-        product-add
+     product
+        product-create
            product-add.component.css
            product-add.component.html
            product-add.component.ts           
 ```
+
+Obs: Na pasta 'pages' também existem components. Acontece que colocamos em 'pages' os componentes principais de carregamento inicial.
+
 
 ## New Service
 ```
@@ -54,6 +57,12 @@ export class ProductService {
 }
 ```
 
+## Mock
+
+Estamos utilizando um Service 'Fake' (product-fake.service.ts). 
+Esse serviço fake não faz nenhuma conexão com API backend. Diferente do product.service.ts, que é o modelo padrão de acesso http.
+
+
 ###### Dependency injection
 Graças ao serviço de injeção de dependência do Angular podemos injetar ProductService no Construtor de qualquer Componente:
 ```
@@ -69,7 +78,6 @@ export class ProductAddComponent implements OnInit {
   }
 }
 ```
-
  
 ## HttpClient
 Comunicação HTTP.
