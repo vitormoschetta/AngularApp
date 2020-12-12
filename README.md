@@ -1,27 +1,315 @@
 # AngularApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
+## New App 
+```
+ng new <app-name> --minimal
+```
 
-## Development server
+## New Component
+```
+ng generate component components/produt/product-create
+```
+Abreviado:
+```
+ng g c components/produt/product-create
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+O comando acima cria um component com três arquivos no diretório conforme a baixo:
+```
+app
+  components
+     product
+        product-create
+           product-add.component.css
+           product-add.component.html
+           product-add.component.ts           
+```
 
-## Code scaffolding
+Obs: Na pasta 'pages' também existem components. Acontece que colocamos em 'pages' os componentes principais de carregamento inicial.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## New Service
+```
+ng generate service services/product
+```
+Abreviado:
+```
+ng g s services/product
+```
+Será criado um service no seguinte diretório:
+```
+app
+  services
+     product.service                  
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Obs: O serviço implementa um decorador chamadado 'Injectable':
 
-## Running unit tests
+```
+import { Injectable } from '@angular/core';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@Injectable({
+    providedIn: 'root'
+})
 
-## Running end-to-end tests
+export class ProductService {
+    constructor() { }
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Mock
 
-## Further help
+Estamos utilizando um Service 'Fake' (product-fake.service.ts). 
+Esse serviço fake não faz nenhuma conexão com API backend. Diferente do product.service.ts, que é o modelo padrão de acesso http.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+###### Dependency injection
+Graças ao serviço de injeção de dependência do Angular podemos injetar ProductService no Construtor de qualquer Componente:
+```
+export class ProductAddComponent implements OnInit {
+  products: Product[];
+  
+  constructor(productService: ProductService) { }
+
+  ngOnInit(): void {
+      this.productService.getAll().subscribe(data => {
+         this.products = data
+      })
+  }
+}
+```
+ 
+## HttpClient
+Comunicação HTTP.
+Importar o módulo. Arquivo: 'app.module.ts':
+```
+import { HttpClientModule } from '@angular/common/http'; // <--
+
+@NgModule({
+  declarations: [
+    AppComponent,   
+  ],
+  imports: [
+    HttpClientModule, // <-- 
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+
+export class AppModule { }
+```
+
+Injetar no CONSTRUTOR do SERVICE:
+```
+constructor(http: HttpClient) { }
+```
+
+#### Service HTTP CRUD
+```
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/models/product';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductService {
+
+  baseUrl: string = "http://localhost:3001/products";
+
+  constructor(private http: HttpClient) { }
+
+  add(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.baseUrl, product);
+  }
+
+  getAll(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseUrl);
+  }
+
+  getById(id: string): Observable<Product> {
+    const url = `${this.baseUrl}/${id}`
+    return this.http.get<Product>(url)
+  }
+
+  update(product: Product): Observable<Product> {
+    const url = `${this.baseUrl}/${product.id}`
+    return this.http.put<Product>(url, product)
+  }
+
+  delete(id: number): Observable<Product> {
+    const url = `${this.baseUrl}/${id}`
+    return this.http.delete<Product>(url)
+  }
+
+}
+```
+
+#### Component CRUD / Observable
+
+###### Add:
+```
+export class ProductAddComponent {
+  product: Product
+  
+  constructor(productService: ProductService, router: Router) { }
+
+  createProduct(): void {
+    this.productService.add(this.product).subscribe(() => {
+      this.productService.ShowMessage('Produto Criado!')
+    })
+  }
+
+}
+```
+###### Delete:
+```
+xport class ProductDeleteComponent implements OnInit {
+  product: Product
+
+  constructor(productService: ProductService, router: Router, route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id')
+    this.getById(id)
+  }
+
+  getById(id: string) {
+    this.productService.getById(id).subscribe(data => {
+      this.product = data;
+    })
+  }
+
+  deleteProduct(): void {
+    this.productService.delete(this.product.id).subscribe(() => {
+      this.productService.ShowMessage("Produto excluido!");
+      this.router.navigate(["/products"]);
+    })
+  }
+  
+}
+```
+
+###### Update:
+```
+export class ProductUpdateComponent implements OnInit {
+  product: Product
+
+  constructor(productService: ProductService, router: Router, route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id')
+    this.getById(id)
+  }
+
+  getById(id: string) {
+    this.productService.getById(id).subscribe(data => {
+      this.product = data;
+    })
+  }
+
+  updateProduct(): void {
+    this.productService.update(this.product).subscribe(() => {
+      this.productService.ShowMessage('Produto Atualizado!')
+      this.router.navigate(["/products"]);
+    })
+  }
+
+}
+```
+
+###### Read:
+```
+export class ProductReadComponent implements OnInit {
+  products: Product[];  
+
+  constructor(productService: ProductService) { }
+
+  ngOnInit(): void {
+    this.get();
+  }
+
+  get(): void {
+    this.productService.getAll().subscribe(data => {
+      this.products = data
+    })
+  }
+
+}
+```
+
+## FormGroup, FormBuilder and Validators
+Importação dos pacotes necessários:
+```
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+```
+
+###### FormGroup
+O formulário HTML precisa de uma identificação (FormGroup), declaramos no componente o seguinte:
+```
+public formCliente: FormGroup;
+```
+
+No HTML deve ficar assim:
+```
+<form [formGroup]="formCliente" (ngSubmit)="onSubmit()">
+```
+
+###### FormBuilder
+Agora precisamos agrupar os campos do formulário ao formGroup:
+```
+constructor(private fb: FormBuilder) {
+  this.formCliente = this.fb.group({
+      nome: [''],
+      cpf: [''],
+      email: [''],
+      dataNascimento: [''],
+    });
+}
+```
+
+Esses são os nomes que devemos dar aos nossos campos no formulário HTML, exemplo:
+```
+<input type="text" formControlName="nome">
+```
+
+###### Validators
+Configurar as validações para os campos que criamos. Vamos atualizar o código do FormBuilder feito anteriormente:
+```
+constructor(private fb: FormBuilder) {
+  this.formCliente = this.fb.group({
+    nome: ['', [
+        Validators.minLength(3),
+        Validators.required,
+      ]],
+      cpf: ['', [
+        Validators.minLength(11),
+        Validators.maxLength(11),
+        Validators.required,
+      ]],
+      email: ['', [
+        Validators.required,
+        Validators.email,
+      ]],
+      dataNascimento: [],
+  });
+}
+```
+
+Para atribuir os valores de um formulário para um objeto:
+```
+public cliente: Cliente;
+
+onSubmit() {
+    this.cliente = this.formCliente.value;
+  }
+```
+
+
+
+## Lazy Loading 
+'Carregamento Lento'. 
+"Para aplicativos grandes com muitas rotas, considere o carregamento lento - um padrão de design que carrega NgModules conforme necessário." Angular.io
+
+
