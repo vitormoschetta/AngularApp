@@ -17,6 +17,7 @@ export class ProductFakeService {
       { id: '3', name: 'product 03', price: '2.55' },
       { id: '4', name: 'product 04', price: '5.99' },
       { id: '5', name: 'product 05', price: '99.50' },
+      { id: '6', name: 'product 06', price: '1000.50' },
     ];
   }
 
