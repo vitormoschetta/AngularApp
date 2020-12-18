@@ -5,7 +5,6 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
-import { OnInit } from '@angular/core';
 
 
 export class ProductDataSource extends DataSource<Product>{
@@ -70,7 +69,8 @@ export class ProductDataSource extends DataSource<Product>{
   }
 }
 
-/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a: string | string, b: string | string, isAsc: boolean) {
+/* Comparador de classificação simples para colunas de ID / Nome de exemplo 
+(para classificação do lado do cliente). */
+function compare(a: string | number, b: string | number, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

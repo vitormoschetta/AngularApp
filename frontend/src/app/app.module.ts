@@ -44,7 +44,7 @@ import { ProductList2Component } from './components/product/product-list2/produc
     ProductDeleteComponent,
     ProductUpdateComponent,
     ProductListComponent,
-    ProductList2Component,       
+    ProductList2Component,    
   ],
   imports: [
     BrowserModule,
