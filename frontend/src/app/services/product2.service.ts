@@ -15,8 +15,7 @@ export class ProductService {
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { } 
 
   create(product: Product): Observable<DataResult> {
-    const url = `${this.baseUrl}/create`
-    return this.http.post<DataResult>(url, product);
+    return this.http.post<DataResult>(`${this.baseUrl}/create`, product);
   }
 
   getAll(): Observable<Product[]> {
@@ -26,15 +25,17 @@ export class ProductService {
 
   getById(id: string): Observable<Product> {
     const url = `${this.baseUrl}/getbyid/${id}`
-    return this.http.get<Product>(url)    
+    let data = this.http.get<Product>(url)
+    return data
   }
 
   update(product: Product): Observable<DataResult> {
     const url = `${this.baseUrl}/update/${product.id}`
-    return this.http.put<DataResult>(url, product)    
+    let data = this.http.put<DataResult>(url, product)
+    return data
   }
 
-  delete(id: string): Observable<DataResult> {
+  delete(id: number): Observable<DataResult> {
     const url = `${this.baseUrl}/delete/${id}`
     return this.http.delete<DataResult>(url)
   }

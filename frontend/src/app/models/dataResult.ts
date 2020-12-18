@@ -1,12 +1,12 @@
 export class DataResult {
 
-    constructor(success: boolean, message: string, objeto: any) {
+    constructor(success: boolean, message: string, object: any) {
         this.success = success
         this.message = message
-        this.objeto = objeto
-    }
+        this.object = object
+    }    
 
     public success: boolean;
     public message: string;
-    public objeto: any;
+    public object: any;
 }

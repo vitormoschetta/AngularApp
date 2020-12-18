@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductFakeService } from 'src/app/mock/product-fake.service';
 import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,10 +14,12 @@ export class ProductListComponent implements OnInit {
   products: Product[]  
   displayedColumns = ['id', 'name', 'price', 'action']
 
-  constructor(private productService: ProductFakeService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-    this.products = this.productService.getAll()    
+    this.productService.getAll().subscribe(data => {
+      this.products = data
+    })  
   }  
 
   create(): void {

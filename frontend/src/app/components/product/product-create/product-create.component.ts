@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductFakeService } from 'src/app/mock/product-fake.service';
 import { DataResult } from 'src/app/models/dataResult';
 import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-create',
@@ -19,7 +19,7 @@ export class ProductCreateComponent implements OnInit {
   dataResult: DataResult
 
   constructor(
-    private productService: ProductFakeService,
+    private productService: ProductService,
     private router: Router,
     private fb: FormBuilder) { }
 
@@ -38,8 +38,10 @@ export class ProductCreateComponent implements OnInit {
 
   create(): void {
     this.product = this.form.value
-    this.dataResult = this.productService.add(this.product)   
-    this.showMessage()
+    this.productService.create(this.product).subscribe(data => {
+      this.dataResult = data
+      this.showMessage()
+    })      
   }
 
   showMessage() {
