@@ -8,35 +8,30 @@ import { Product } from '../models/product';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
 
+export class ProductService {
   baseUrl: string = "https://localhost:5001/api/product";
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { } 
 
-  create(product: Product): Observable<DataResult> {
-    const url = `${this.baseUrl}/create`
-    return this.http.post<DataResult>(url, product);
+  create(product: Product): Observable<DataResult> {    
+    return this.http.post<DataResult>(this.baseUrl, product);
   }
 
-  getAll(): Observable<Product[]> {
-    const url = `${this.baseUrl}/getall`
-    return this.http.get<Product[]>(url);
+  getAll(): Observable<Product[]> {    
+    return this.http.get<Product[]>(this.baseUrl);
   }
 
-  getById(id: string): Observable<Product> {
-    const url = `${this.baseUrl}/getbyid/${id}`
-    return this.http.get<Product>(url)    
+  getById(id: string): Observable<Product> {    
+    return this.http.get<Product>(`${this.baseUrl}/${id}`)    
   }
 
-  update(product: Product): Observable<DataResult> {
-    const url = `${this.baseUrl}/update/${product.id}`
-    return this.http.put<DataResult>(url, product)    
+  update(product: Product): Observable<DataResult> {    
+    return this.http.put<DataResult>(`${this.baseUrl}/${product.id}`, product)    
   }
 
-  delete(id: string): Observable<DataResult> {
-    const url = `${this.baseUrl}/delete/${id}`
-    return this.http.delete<DataResult>(url)
+  delete(id: string): Observable<DataResult> {    
+    return this.http.delete<DataResult>(`${this.baseUrl}/${id}`)
   }
 
   ShowMessageSuccess(message: string): void {
