@@ -27,6 +27,9 @@ import { ProductCreateComponent } from './components/product/product-create/prod
 import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { ProductList2Component } from './components/product/product-list2/product-list2.component';
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { ProductListComponent } from './components/product/product-list/product-
     ProductCreateComponent,
     ProductDeleteComponent,
     ProductUpdateComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductList2Component,       
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,9 @@ import { ProductListComponent } from './components/product/product-list/product-
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    MatIconModule,   
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule,   
   ],
   providers: [
     {

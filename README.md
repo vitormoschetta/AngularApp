@@ -308,6 +308,17 @@ onSubmit() {
 ```
 
 
+## Angular Schematics
+
+Se trata de componentes completos, como por exemplo uma tabela já com paginação e e filtro incluídos.
+
+Código para gerar:
+
+```
+ng generate @angular/material:table components/product/product-list
+```
+
+
 
 ## Lazy Loading 
 'Carregamento Lento'. 
