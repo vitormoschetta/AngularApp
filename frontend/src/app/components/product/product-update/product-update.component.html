@@ -7,16 +7,16 @@
 
         <mat-form-field>
             <input matInput placeholder="Nome" formControlName="name">
-            <small *ngIf="submitted && frm.name.invalid">
+            <mat-error *ngIf="submitted && frm.name.invalid">
                 <p class="alert">Nome deve conter no mínimo 4 caracteres.</p>
-            </small>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <input matInput placeholder="Preço (R$)" formControlName="price" currencyMask>
-            <small *ngIf="submitted && frm.price.invalid">
+            <mat-error *ngIf="submitted && frm.price.invalid">
                 <p class="alert">Preço é requerido</p>
-            </small>
+            </mat-error>
         </mat-form-field>       
 
         <button type="submit" mat-raised-button class="button-edit" >

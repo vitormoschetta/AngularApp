@@ -2,23 +2,24 @@
     <mat-card-title>Cadastro de Produto</mat-card-title>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-
         <mat-form-field>
             <mat-label>Nome do Produto</mat-label>
             <input matInput formControlName="name">
-            <small *ngIf="submitted && frm.name.invalid">
+            <mat-error *ngIf="submitted && frm.name.invalid">
                 <p class="alert">Nome deve conter no mínimo 4 caracteres.</p>
-            </small>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Preço (R$)</mat-label>
             <input matInput formControlName="price" currencyMask>
-            <small *ngIf="submitted && frm.price.invalid">
+            <mat-error *ngIf="submitted && frm.price.invalid">
                 <p class="alert">Preço é requerido</p>
-            </small>
-        </mat-form-field>        
-      
+            </mat-error>
+        </mat-form-field>
+        
+        <br>
+
         <button type="submit" mat-raised-button class="button-add">
             Gravar
         </button>
@@ -29,4 +30,3 @@
 
     </form>
 </mat-card>
-
