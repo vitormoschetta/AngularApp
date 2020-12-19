@@ -3,14 +3,12 @@
 
 ###### Aplicação hospedada em [Vercel](https://vercel.com/).
 
-###### Segue o link:   
-###### [https://vithor-angular.vercel.app/](https://vithor-angular.vercel.app/)
+###### Segue o link: [https://vithor-angular.vercel.app/](https://vithor-angular.vercel.app/)
 
 
 ###### Consumindo uma API hospedada em [Heroku](https://www.heroku.com/).
 
-###### Segue link da documentação da API:  
-###### [https://vithor-api.herokuapp.com/index.html](https://vithor-api.herokuapp.com/index.html)
+###### Segue link da documentação da API: [https://vithor-api.herokuapp.com/index.html](https://vithor-api.herokuapp.com/index.html)
 
 
 
