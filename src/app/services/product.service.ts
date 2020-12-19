@@ -4,22 +4,23 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { DataResult } from '../models/dataResult';
 import { Product } from '../models/product';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ProductService {
-  baseUrl: string = "https://localhost:5001/api/product";
+  baseUrl: string = `${environment.baseUrl}/product`
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { } 
 
   create(product: Product): Observable<DataResult> {    
-    return this.http.post<DataResult>(this.baseUrl, product);
+    return this.http.post<DataResult>(this.baseUrl, product)
   }
 
   getAll(): Observable<Product[]> {    
-    return this.http.get<Product[]>(this.baseUrl);
+    return this.http.get<Product[]>(this.baseUrl)
   }
 
   getById(id: string): Observable<Product> {    
