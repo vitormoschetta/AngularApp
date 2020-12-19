@@ -1,7 +1,7 @@
 # Angular Material
 
 
-Aplicação hospedada em (https://vercel.com/)[Vercel]
+Aplicação hospedada em [Vercel](https://vercel.com/)  
 
 [https://vithor-angular.vercel.app/](https://vithor-angular.vercel.app/)
 
