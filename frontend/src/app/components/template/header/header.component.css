@@ -1,32 +1,16 @@
 .header {
-    display: flex;
-    align-items: center;
-    background-color: #3F51B5;
-    color: white;
+    background-color:#0F7AE5;
+    color: #F8F9FA;
 }
 
-.header a{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+.header .toggle {
+    padding-left: 10px;
 }
 
 .header .logo {
-    max-height: 100px;
+    padding-left: 1em;
 }
 
-.header .title-group {
-    padding-left: 25px;    
-    align-items: flex-end;
-    text-align: end;
-}
-
-
-.header .title-group {
-    padding-right: 25px;
-    
-}
-
-.header .material-icons {
-    font-size: 50px;
+.spacer {
+    flex: 1 1 auto;
 }

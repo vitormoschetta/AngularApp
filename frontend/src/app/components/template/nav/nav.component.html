@@ -6,7 +6,13 @@
                 <i class="material-icons">
                     home
                 </i>
-                Início
+                Home
+            </a>            
+            <a mat-list-item  routerLink="/product">
+                <i class="material-icons">
+                    storefront
+                </i>
+                Produtos
             </a>
             <a mat-list-item routerLink="/">
                 <i class="material-icons">
@@ -14,16 +20,12 @@
                 </i>
                 Usuário                
             </a>           
-            <a mat-list-item  routerLink="/product">
-                <i class="material-icons">
-                    storefront
-                </i>
-                Produtos
-            </a>
         </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content class="content">        
+
+    <!-- CONTEÚDO-->
+    <mat-sidenav-content class="content">   
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 

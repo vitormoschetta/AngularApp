@@ -1,8 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+    height: 100%; 
+}
 
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: #EEEEEE;    
+}
 
 .error-snackbar {
     background:#E35E6B;
@@ -13,7 +19,49 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: #E35E6B;
 }
 
-.button-edit {
-    background-color: #3c3839; 
-    color: white;
+.icon-edit {    
+    color: #747373;
+}  
+.icon-edit :hover {    
+    color: #1f1e1e;
+}  
+  
+.icon-delete {
+    color: #e26b77;   
 }
+.icon-delete :hover {
+    color: #fa1707;   
+}
+
+.button-add {
+    background-color:#0F7AE5;
+    color: #fff;
+}
+.button-add:hover{
+    background-color:#074e96;
+    color: #fff;
+}
+
+.button-edit {
+    background-color:#545557;
+    color: #fff;
+}
+.button-edit:hover{
+    background-color:#4d4b4b;
+    color: #fff;
+}
+
+.button-delete {
+    background-color:#df5966;
+    color: #fff;
+}
+.button-delete:hover{
+    background-color:#fa1707;
+    color: #fff;
+}
+
+.pad-right-1 {
+    padding-right: 1em;
+}
+
+

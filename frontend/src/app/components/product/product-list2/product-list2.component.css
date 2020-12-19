@@ -1,20 +1,8 @@
-.full-width-table {
-  width: 100%;
-}
-
 table {
-  width: 100%;
+  width: 100%; 
 }
 
-.edit {
-  margin-right: 10px;
+.mat-cell {
+  font-size: 13px;
 }
 
-.edit > i {
-  color: #3b3a3a;
-}
-
-.delete > i {
-  color: #e35e6b;
-  margin-left: 1rem;
-}
