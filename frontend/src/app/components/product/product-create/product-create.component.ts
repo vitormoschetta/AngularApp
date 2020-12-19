@@ -4,12 +4,11 @@ import { Router } from '@angular/router';
 import { DataResult } from 'src/app/models/dataResult';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
-import { NgxCurrencyModule } from "ngx-currency";
 
 @Component({
   selector: 'app-product-create',
   templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.css']
+  styleUrls: ['./product-create.component.css', '../product.css']
 })
 
 export class ProductCreateComponent implements OnInit {
