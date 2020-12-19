@@ -13,7 +13,7 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="Preço (R$)" formControlName="price" type="number">
+            <input matInput placeholder="Preço (R$)" formControlName="price" currencyMask>
             <small *ngIf="submitted && frm.price.invalid">
                 <p class="alert">Preço é requerido</p>
             </small>

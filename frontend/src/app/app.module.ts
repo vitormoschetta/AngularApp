@@ -5,11 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ProductComponent } from './pages/product/product.component';
-
-
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -20,6 +15,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
+import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProductComponent } from './pages/product/product.component';
 import { HeaderComponent } from './components/template/header/header.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { FooterComponent } from './components/template/footer/footer.component';
@@ -27,14 +28,28 @@ import { ProductCreateComponent } from './components/product/product-create/prod
 import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 import { ProductList2Component } from './components/product/product-list2/product-list2.component';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 
 registerLocaleData(localePt);
+
+import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
+export const customCurrencyMaskConfig = {
+  align: "left",
+  allowNegative: true,
+  allowZero: true,
+  decimal: ",",
+  precision: 2,
+  prefix: "",
+  suffix: "",
+  thousands: ".",
+  nullable: true,
+  min: null,
+  max: null,
+  inputMode: CurrencyMaskInputMode.FINANCIAL
+};
 
 @NgModule({
   declarations: [
@@ -56,7 +71,8 @@ registerLocaleData(localePt);
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,    
+    ReactiveFormsModule,      
+    NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
