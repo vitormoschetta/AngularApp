@@ -6,9 +6,9 @@
 ###### Segue o link: [https://vithor-angular.vercel.app/](https://vithor-angular.vercel.app/)
 
 
-###### Consumindo uma API hospedada em [Heroku](https://www.heroku.com/).
+###### Consumindo uma API hospedada em [Azure](https://azure.microsoft.com/pt-br/).
 
-###### Segue link da documentação da API: [https://vithor-api.herokuapp.com/index.html](https://vithor-api.herokuapp.com/index.html)
+###### Segue link da documentação da API: [https://backend-netcore-api.azurewebsites.net/index.html](https://backend-netcore-api.azurewebsites.net/index.html)
 
 ###### Código fonte do Backend / API: [Backend-NETCore-InMemory](https://github.com/vitormoschetta/Backend-NETCore-InMemory)
 
