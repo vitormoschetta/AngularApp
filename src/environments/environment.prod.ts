@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://vithor-api.herokuapp.com/api'
+  baseUrl: 'https://backend-netcore.azurewebsites.net/api'
 };
