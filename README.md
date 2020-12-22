@@ -10,7 +10,7 @@
 
 ###### Segue link da documentação da API: [https://backend-netcore-api.azurewebsites.net/index.html](https://backend-netcore-api.azurewebsites.net/index.html)
 
-###### Código fonte do Backend / API: [Backend-NETCore-InMemory](https://github.com/vitormoschetta/Backend-NETCore-InMemory)
+###### Código fonte do Backend / API: [Backend-NETCore](https://github.com/vitormoschetta/Backend-NETCore)
 
 
 
