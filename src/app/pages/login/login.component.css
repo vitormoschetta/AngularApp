@@ -4,7 +4,7 @@ mat-card{
     display: block;
     margin-left:auto;
     margin-right:auto;  
-    margin-top: 3em;
+    padding-top: 1em;
 }
 
 mat-card-title {

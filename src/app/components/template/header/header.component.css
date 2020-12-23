@@ -9,6 +9,8 @@
 
 .header .logo {
     padding-left: 1em;
+    text-decoration: none;
+    color: white;
 }
 
 .spacer {

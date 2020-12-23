@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
+import { DataResult } from 'src/app/models/dataResult';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotifyService } from 'src/app/services/notify.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup
-  loading = false
+  dataResult: DataResult
   submitted = false
   returnUrl: string
 
@@ -19,46 +20,48 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthService,
-  ) {
-    // redirecionar para dashboard se já estiver logado
-    if (this.authenticationService.currentUserValue) {
+    private authService: AuthService,
+    private notify: NotifyService) {
+    if (this.authService.currentUserValue) {  // <-- redirecionar para dashboard se já estiver logado
       this.router.navigate(['/dashboard']);
     }
   }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.createForm()
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'  // <--obtém o url de retorno 
+  }
 
-    // obtém o url de retorno dos parâmetros de rota ou padrão para '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
-  }  
 
   onSubmit() {
     this.submitted = true
-
-    // // reset alerts on submit
-    // this.alertService.clear();
-        
-    if (this.form.invalid) 
-      return;    
-
-    this.loading = true;
-    this.authenticationService.login(this.frm.username.value, this.frm.password.value)
-      .pipe(first())
+    if (this.form.invalid)
+      return;
+    
+    this.authService
+      .login(this.frm.username.value, this.frm.password.value)
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          this.dataResult = data
+          this.showMessage()
         },
         error => {
-          // this.alertService.error(error);
-          this.loading = false;
-        });        
+          this.notify.ShowMessageError(error, 2000)
+        })
   }
+  
+
+  showMessage() {
+    if (this.dataResult.success)
+      this.router.navigate(['/dashboard'])
+    else
+      this.notify.ShowMessageError(this.dataResult.message, 2000)
+  }
+
 
   createForm() {
     this.form = this.fb.group({
-      name: [
+      username: [
         '',
         Validators.compose([
           Validators.required,
@@ -73,6 +76,6 @@ export class LoginComponent implements OnInit {
       ]
     });
   }
-  
+
   get frm() { return this.form.controls; }
 }

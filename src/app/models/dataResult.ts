@@ -10,3 +10,6 @@ export class DataResult {
     public message: string;
     public object: any;
 }
+
+
+

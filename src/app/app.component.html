@@ -1,16 +1,12 @@
 <app-header></app-header>
-<!-- <app-nav></app-nav>  -->
 
+<div *ngIf="currentUser">
+    <app-nav></app-nav> 
+</div>
 
-
-<!-- main app container -->
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 offset-sm-3">
-                <!-- <alert></alert> -->
-                <router-outlet></router-outlet>
-            </div>
-        </div>
+<div *ngIf="!currentUser" class="container">
+    <div>        
+        <router-outlet></router-outlet>
     </div>
 </div>
+

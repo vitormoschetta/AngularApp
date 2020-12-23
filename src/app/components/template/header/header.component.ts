@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataResult } from 'src/app/models/dataResult';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,18 +11,17 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  currentUser: User;
+  currentUser: User  
 
-  constructor(private router: Router, private authenticationService: AuthService
-  ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  constructor(private router: Router, private authService: AuthService) {
+    this.authService.currentUser.subscribe(x => this.currentUser = x)    
   }
 
   ngOnInit(): void {
   }
 
   logout() {
-    this.authenticationService.logout();
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 

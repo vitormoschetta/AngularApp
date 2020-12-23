@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { DataResult } from '../models/dataResult';
 import { Product } from '../models/product';
 import { environment } from '../../environments/environment';
+import { NotifyService } from './notify.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,11 @@ import { environment } from '../../environments/environment';
 export class ProductService {
   baseUrl: string = `${environment.baseUrl}/product`
 
-  constructor(private snackBar: MatSnackBar, private http: HttpClient) { } 
+  constructor(
+    private snackBar: MatSnackBar, 
+    private http: HttpClient, 
+    private notify: NotifyService) 
+    { } 
 
   create(product: Product): Observable<DataResult> {    
     return this.http.post<DataResult>(this.baseUrl, product)
@@ -35,21 +40,12 @@ export class ProductService {
     return this.http.delete<DataResult>(`${this.baseUrl}/${id}`)
   }
 
-  ShowMessageSuccess(message: string): void {
-    this.snackBar.open(message, 'X', {
-      duration: 4000,
-      horizontalPosition: "right",
-      verticalPosition: "top",
-    })
+  ShowMessageSuccess(message: string, duration: number): void {
+    this.notify.ShowMessageSuccess(message, duration)
   }
 
-  ShowMessageError(message: string): void {
-    this.snackBar.open(message, '', {
-      duration: 4000,
-      horizontalPosition: "center",
-      verticalPosition: 'top',
-      panelClass: ['error-snackbar']
-    })
+  ShowMessageError(message: string, duration: number): void {
+    this.notify.ShowMessageError(message, duration)
   }
 
 }

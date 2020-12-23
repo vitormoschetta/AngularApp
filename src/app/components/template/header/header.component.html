@@ -4,13 +4,13 @@
         <mat-icon>menu</mat-icon>
     </button>
 
-    <span class="logo">Logo</span>
+    <a class="logo" routerLink="/home">Home</a>
 
     <span class="spacer"></span>
 
     <nav *ngIf="currentUser">
         <a mat-icon-button style="margin-right: 1em;">
-            {{currentUser.name}}
+            {{currentUser.username}}
         </a>
         <a mat-icon-button style="margin-right: 1em;" (click)="logout()">
             sair

@@ -51,11 +51,11 @@ export class ProductUpdateComponent implements OnInit {
 
   showMessage() {
     if (this.dataResult.success) {
-      this.productService.ShowMessageSuccess(this.dataResult.message)
+      this.productService.ShowMessageSuccess(this.dataResult.message, 3000)
       this.close()
     }
     else
-      this.productService.ShowMessageError(this.dataResult.message)
+      this.productService.ShowMessageError(this.dataResult.message, 3000)
   }
 
   close(): void {
