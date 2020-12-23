@@ -13,8 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductUpdateComponent implements OnInit {
   product: Product
   form: FormGroup
-  submitted: boolean = false
-  saveConfirm: boolean = false
+  submitted: boolean = false  
   dataResult: DataResult
 
   constructor(
@@ -35,8 +34,7 @@ export class ProductUpdateComponent implements OnInit {
     })    
   }
 
-  onSubmit() {
-    this.saveConfirm = false
+  onSubmit() {    
     this.submitted = true
     if (this.form.invalid)
       return;
@@ -54,7 +52,7 @@ export class ProductUpdateComponent implements OnInit {
   showMessage() {
     if (this.dataResult.success) {
       this.productService.ShowMessageSuccess(this.dataResult.message)
-      this.clear()
+      this.close()
     }
     else
       this.productService.ShowMessageError(this.dataResult.message)
@@ -64,10 +62,9 @@ export class ProductUpdateComponent implements OnInit {
     this.router.navigate(['/product'])
   }
 
-  clear(): void {
-    this.submitted = false;
-    this.form.reset();
-  }
+  // clear(): void {
+  //   this.submitted = false
+  // }
 
   createForm() {
     this.form = this.fb.group({
