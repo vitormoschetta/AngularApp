@@ -1,4 +1,5 @@
 <mat-toolbar class="header">
+
     <button mat-icon-button class="toggle">
         <mat-icon>menu</mat-icon>
     </button>
@@ -7,7 +8,19 @@
 
     <span class="spacer"></span>
 
-    <button mat-icon-button style="margin-right: 1em;" >
-        User
-    </button>   
+    <nav *ngIf="currentUser">
+        <a mat-icon-button style="margin-right: 1em;">
+            {{currentUser.name}}
+        </a>
+        <a mat-icon-button style="margin-right: 1em;" (click)="logout()">
+            sair
+        </a>      
+    </nav>
+
+    <nav *ngIf="!currentUser">       
+        <a mat-icon-button style="margin-right: 1em;" (click)="login()">
+            login
+        </a>      
+    </nav>
+    
 </mat-toolbar>

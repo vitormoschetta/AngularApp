@@ -36,6 +36,9 @@ import { registerLocaleData } from '@angular/common';
 registerLocaleData(localePt);
 
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 export const customCurrencyMaskConfig = {
   align: "left",
   allowNegative: true,
@@ -63,7 +66,10 @@ export const customCurrencyMaskConfig = {
     ProductDeleteComponent,
     ProductUpdateComponent,
     ProductListComponent,
-    ProductList2Component,    
+    ProductList2Component,
+    DashboardComponent,
+    LoginComponent,
+    RegisterComponent,    
   ],
   imports: [
     BrowserModule,
