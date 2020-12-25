@@ -21,13 +21,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 
 import { AppComponent } from './app.component';
-import { ProductComponent } from './internal/product/product.component';
-import { ProductCreateComponent } from './internal/product/product-create/product-create.component';
-import { ProductDeleteComponent } from './internal/product/product-delete/product-delete.component';
-import { ProductUpdateComponent } from './internal/product/product-update/product-update.component';
-import { ProductListComponent } from './internal/product/product-list/product-list.component';
-import { ProductList2Component } from './internal/product/product-list2/product-list2.component';
-import { DashboardComponent } from './internal/dashboard/dashboard.component';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
@@ -55,14 +48,7 @@ export const customCurrencyMaskConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent,   
-    ProductComponent,        
-    ProductCreateComponent,
-    ProductDeleteComponent,
-    ProductUpdateComponent,
-    ProductListComponent,
-    ProductList2Component,
-    DashboardComponent,
+    AppComponent   
   ],
   imports: [
     BrowserModule,
@@ -74,6 +60,20 @@ export const customCurrencyMaskConfig = {
     FormsModule,
     ReactiveFormsModule,      
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule,   
+  ],
+  exports: [
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,

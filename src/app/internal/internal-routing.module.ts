@@ -6,6 +6,7 @@ import { ProductCreateComponent } from './product/product-create/product-create.
 import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
 import { ProductComponent } from './product/product.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { UsersComponent } from './users/users.component';
 
 const internalRoutes: Routes = [ 
@@ -15,6 +16,7 @@ const internalRoutes: Routes = [
     { path: 'product/create', component: ProductCreateComponent, canActivate: [AuthGuard] },
     { path: 'product', component: ProductComponent, canActivate: [AuthGuard] },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'unauthorized', component: UnauthorizedComponent, canActivate: [AuthGuard] },
 ];
 
 

@@ -12,14 +12,22 @@ export class AuthGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): boolean | Observable<boolean> {
+
     this.authService.currentUser.subscribe(x => this.currentUser = x)
 
-    if (this.currentUser)
-      return true
+    if (!this.currentUser) {      
+      this.router.navigate(['/login'])
+      return false
+    }    
 
-    this.router.navigate(['/login'])
+    if (state.url.includes('delete') && this.currentUser.role != "Admin") {
+      this.router.navigate(['/unauthorized'])
+      return false
+    }
 
-    return false
+    return true
   }
 }

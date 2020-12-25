@@ -14,23 +14,54 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+
+import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
+
 import { InternalComponent } from './internal.component';
 import { InternalRoutingModule } from './internal-routing.module';
-import { HeaderComponent } from '../template/header/header.component';
-import { NavComponent } from '../template/nav/nav.component';
+import { HeaderComponent } from './template/header/header.component';
+import { NavComponent } from './template/nav/nav.component';
 import { UsersComponent } from './users/users.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { ProductComponent } from './product/product.component';
+import { ProductCreateComponent } from './product/product-create/product-create.component';
+import { ProductList2Component } from './product/product-list2/product-list2.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductUpdateComponent } from './product/product-update/product-update.component';
+import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 
+export const customCurrencyMaskConfig = {
+  align: "left",
+  allowNegative: true,
+  allowZero: true,
+  decimal: ",",
+  precision: 2,
+  prefix: "",
+  suffix: "",
+  thousands: ".",
+  nullable: true,
+  min: null,
+  max: null,
+  inputMode: CurrencyMaskInputMode.FINANCIAL
+};
 
 @NgModule({
   declarations: [
     InternalComponent,
     HeaderComponent,
     NavComponent,
-    UsersComponent,
+    UnauthorizedComponent,    
+    DashboardComponent,  
+    ProductComponent,           
+    ProductCreateComponent,
+    ProductUpdateComponent,
+    ProductDeleteComponent,    
+    ProductList2Component,
+    UsersComponent,      
   ],
   imports: [
     CommonModule,
-    InternalRoutingModule,
+    InternalRoutingModule,    
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
@@ -44,12 +75,21 @@ import { UsersComponent } from './users/users.component';
     MatTableModule,
     MatIconModule,
     MatPaginatorModule,
-    MatSortModule,
+    MatSortModule,   
+    NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
   ],
   exports: [
     InternalComponent,
     HeaderComponent,
     NavComponent,
+    UnauthorizedComponent,    
+    DashboardComponent,  
+    ProductComponent,           
+    ProductCreateComponent,
+    ProductUpdateComponent,
+    ProductDeleteComponent,    
+    ProductList2Component,
+    UsersComponent,      
   ]
 })
 export class InternalModule { }

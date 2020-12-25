@@ -13,15 +13,17 @@ import { ProductDataSource } from './product-list2-datasource';
   styleUrls: ['./product-list2.component.css', '../product.component.css']
 })
 export class ProductList2Component implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<Product>;
-  dataSource: ProductDataSource;
+  @ViewChild(MatPaginator) paginator: MatPaginator
+  @ViewChild(MatSort) sort: MatSort
+  @ViewChild(MatTable) table: MatTable<Product>
+  dataSource: any;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['name', 'price', 'action']
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router) {
+    this.dataSource = new ProductDataSource(this.productService);
+  }
 
   ngOnInit() {
     this.dataSource = new ProductDataSource(this.productService);
@@ -29,7 +31,7 @@ export class ProductList2Component implements AfterViewInit, OnInit {
 
   create(): void {
     this.router.navigate(['/product/create'])
-  }  
+  }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
