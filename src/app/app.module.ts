@@ -18,27 +18,24 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
+import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
+
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ProductComponent } from './pages/product/product.component';
-import { HeaderComponent } from './components/template/header/header.component';
-import { NavComponent } from './components/template/nav/nav.component';
-import { FooterComponent } from './components/template/footer/footer.component';
-import { ProductCreateComponent } from './components/product/product-create/product-create.component';
-import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
-import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
-import { ProductListComponent } from './components/product/product-list/product-list.component';
-import { ProductList2Component } from './components/product/product-list2/product-list2.component';
+import { ProductComponent } from './internal/product/product.component';
+import { ProductCreateComponent } from './internal/product/product-create/product-create.component';
+import { ProductDeleteComponent } from './internal/product/product-delete/product-delete.component';
+import { ProductUpdateComponent } from './internal/product/product-update/product-update.component';
+import { ProductListComponent } from './internal/product/product-list/product-list.component';
+import { ProductList2Component } from './internal/product/product-list2/product-list2.component';
+import { DashboardComponent } from './internal/dashboard/dashboard.component';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { ExternalModule } from './external/external.module';
+import { InternalModule } from './internal/internal.module';
 
 registerLocaleData(localePt);
 
-import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
 export const customCurrencyMaskConfig = {
   align: "left",
   allowNegative: true,
@@ -56,23 +53,19 @@ export const customCurrencyMaskConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    ProductComponent,
-    HeaderComponent,
-    NavComponent,
-    FooterComponent,
+    AppComponent,   
+    ProductComponent,        
     ProductCreateComponent,
     ProductDeleteComponent,
     ProductUpdateComponent,
     ProductListComponent,
     ProductList2Component,
     DashboardComponent,
-    LoginComponent,
-    RegisterComponent,    
   ],
   imports: [
     BrowserModule,
+    ExternalModule,
+    InternalModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

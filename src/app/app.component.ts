@@ -10,12 +10,12 @@ import { AuthService } from './services/auth.service';
 })
 
 export class AppComponent {
-  currentUser: User;
+  currentUser: User
 
   constructor(
     private router: Router,
     private authService: AuthService) {
-    this.authService.currentUser.subscribe(x => this.currentUser = x);
+    this.authService.currentUser.subscribe(x => this.currentUser = x)
   }
   
 }

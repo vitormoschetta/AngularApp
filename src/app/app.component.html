@@ -1,12 +1,7 @@
-<app-header></app-header>
-
 <div *ngIf="currentUser">
-    <app-nav></app-nav> 
+    <app-internal></app-internal>
 </div>
-
-<div *ngIf="!currentUser" class="container">
-    <div>        
-        <router-outlet></router-outlet>
-    </div>
+<div *ngIf="!currentUser">
+    <app-external></app-external>
 </div>
 
