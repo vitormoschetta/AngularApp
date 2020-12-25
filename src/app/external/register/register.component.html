@@ -13,7 +13,7 @@
         
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput formControlName="password">
+            <input type="password" matInput formControlName="password">
             <mat-error *ngIf="submitted && frm.password.invalid">
                 <p class="alert">Informe a senha!</p>
             </mat-error>
@@ -21,7 +21,7 @@
 
         <mat-form-field>
             <mat-label>Confirm Password</mat-label>
-            <input matInput formControlName="confirmPassword">
+            <input type="password" matInput formControlName="confirmPassword">
             <mat-error *ngIf="submitted && frm.confirmPassword.invalid">
                 <p class="alert">Informe a confirmação da senha!</p>
             </mat-error>

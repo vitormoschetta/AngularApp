@@ -33,6 +33,8 @@ import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { ExternalModule } from './external/external.module';
 import { InternalModule } from './internal/internal.module';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 registerLocaleData(localePt);
 
@@ -86,11 +88,13 @@ export const customCurrencyMaskConfig = {
     MatSortModule,   
   ],
   providers: [
+    AuthService,
+    AuthGuard,
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'
     }
-
+    
   ],
   bootstrap: [AppComponent]
 })
