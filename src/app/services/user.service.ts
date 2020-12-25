@@ -10,7 +10,7 @@ import { NotifyService } from './notify.service';
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl: string = `${environment.baseUrl}/userauth`
+  baseUrl: string = `${environment.baseUrl}/user`
   
   constructor(private http: HttpClient, private notify: NotifyService) { }
 

@@ -13,8 +13,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
-  user: User
+export class RegisterComponent implements OnInit {  
   dataResult: DataResult
   form: FormGroup
   loading = false
@@ -22,13 +21,12 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
-    private authenticationService: AuthService,
-    private userService: UserService,
+    private router: Router,    
+    private authService: AuthService,
     private notify: NotifyService
   ) {
     // redireciona para dashboard se já estiver logado
-    if (this.authenticationService.currentUserValue) {
+    if (this.authService.currentUserValue) {
       this.router.navigate(['/dashboard']);
     }
   }
@@ -42,11 +40,10 @@ export class RegisterComponent implements OnInit {
     
     if (this.form.invalid) 
       return;
-    
-    this.user = this.form.value
+        
     this.loading = true;
-    this.userService
-      .register(this.user)
+    this.authService
+      .register(this.frm.username.value, this.frm.password.value)
       .subscribe(
         data => {
           this.dataResult = data
@@ -58,8 +55,10 @@ export class RegisterComponent implements OnInit {
   }
 
   showMessage() {
-    if (this.dataResult.success)
+    if (this.dataResult.success) {
+      this.notify.ShowMessageSuccess(this.dataResult.message, 2000)
       this.router.navigate(['/login'])
+    }
     else
       this.notify.ShowMessageError(this.dataResult.message, 2000)
   }
