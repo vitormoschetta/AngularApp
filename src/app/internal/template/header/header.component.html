@@ -1,26 +1,20 @@
-<mat-toolbar class="header">
-
-    <button mat-icon-button class="toggle">
-        <mat-icon>menu</mat-icon>
-    </button>
-
-    <a class="logo" routerLink="/home">Home</a>
-
-    <span class="spacer"></span>
-
-    <nav *ngIf="currentUser">
-        <a mat-icon-button style="margin-right: 1em;">
-            {{currentUser.username}}
-        </a>
-        <a mat-icon-button style="margin-right: 1em;" (click)="logout()">
-            sair
-        </a>      
-    </nav>
-
-    <nav *ngIf="!currentUser">       
-        <a mat-icon-button style="margin-right: 1em;" (click)="login()">
-            login
-        </a>      
-    </nav>
-    
+<mat-toolbar color="primary">
+    <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div>
+        <a routerLink="/home">Home</a>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+            <li>
+                <a routerLink="/owner">Owner Actions</a>
+            </li>
+            <li>
+                <a routerLink="/account">Account Actions</a>
+            </li>
+        </ul>
+    </div>
 </mat-toolbar>

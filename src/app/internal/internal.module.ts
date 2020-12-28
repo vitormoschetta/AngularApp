@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -30,6 +31,7 @@ import { ProductUpdateComponent } from './product/product-update/product-update.
 import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
+import { MatMenuModule } from '@angular/material/menu';
 export const customCurrencyMaskConfig = {
   align: "left",
   allowNegative: true,
@@ -64,6 +66,7 @@ export const customCurrencyMaskConfig = {
     CommonModule,        
     FormsModule,
     ReactiveFormsModule,
+    MatTabsModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
@@ -76,6 +79,7 @@ export const customCurrencyMaskConfig = {
     MatIconModule,
     MatPaginatorModule,
     MatSortModule,   
+    MatMenuModule,
     InternalRoutingModule,    
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
   ],
@@ -90,7 +94,7 @@ export const customCurrencyMaskConfig = {
     ProductUpdateComponent,
     ProductDeleteComponent,    
     ProductList2Component,
-    UsersComponent,      
+    UsersComponent,          
   ]
 })
 

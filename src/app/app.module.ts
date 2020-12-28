@@ -7,6 +7,7 @@ import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localePt);
 
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -19,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -69,6 +71,8 @@ export const customCurrencyMaskConfig = {
     MatIconModule,
     MatPaginatorModule,
     MatSortModule,   
+    MatTabsModule,
+    MatMenuModule,
   ],
   exports: [
     MatToolbarModule,
@@ -83,6 +87,8 @@ export const customCurrencyMaskConfig = {
     MatIconModule,
     MatPaginatorModule,
     MatSortModule,   
+    MatTabsModule,
+    MatMenuModule,
   ],
   providers: [
     AuthService,
