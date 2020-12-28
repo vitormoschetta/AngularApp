@@ -11,8 +11,8 @@ export class NotifyService {
   ShowMessageSuccess(message: string, duration: number): void {
     this.snackBar.open(message, 'X', {
       duration: duration,
-      horizontalPosition: "right",
-      verticalPosition: "top",
+      horizontalPosition: "center",
+      verticalPosition: "bottom",
     })
   }
 

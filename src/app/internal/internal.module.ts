@@ -60,7 +60,7 @@ export const customCurrencyMaskConfig = {
     ProductDeleteComponent,    
     ProductListComponent,
     ProductList2Component,
-    UsersComponent,      
+    UsersComponent,
   ],
   imports: [
     CommonModule,        

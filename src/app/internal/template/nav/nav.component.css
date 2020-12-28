@@ -1,10 +1,9 @@
-a{
-    text-decoration: none;
-    color: white;
+mat-nav-list {
+    margin-top: 1em;
 }
 
-a:hover, a:active{
-    color: lightgray;
+a:hover {
+  color: #3F51B5;
 }
 
 .nav-caption{
@@ -14,29 +13,4 @@ a:hover, a:active{
 
 
 
-
-
-.container .sidenav {
-    background-color: #F8F9FA;
-    width: 200px;       
-    padding-top: 1em; 
-}
-
-.container .sidenav a{
-    font-size: 14px;       
-}
-
-.container .sidenav a:hover{
-    color: #0F7AE5;  
-}
-
-.container .sidenav i {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.container .content {
-    padding: 20px;
-    background-color: #EEEEEE;    
-}
 

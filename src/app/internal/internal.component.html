@@ -3,15 +3,10 @@
         <app-nav (sidenavClose)="sidenav.close()"></app-nav>
     </mat-sidenav>
     <mat-sidenav-content>
-        <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+        <app-header (sidenavOpen)="sidenav.toggle()"></app-header>
         <main>
             <router-outlet></router-outlet>
         </main>
     </mat-sidenav-content>
 </mat-sidenav-container>
 
-
-
-
-<!-- <app-header></app-header>
-<app-nav></app-nav> -->
