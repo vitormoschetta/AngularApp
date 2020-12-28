@@ -4,17 +4,15 @@
             <mat-icon>menu</mat-icon>
         </button>
     </div>
-    <div>
-        <a routerLink="/home">Home</a>
-    </div>
+
+    <span class="spacer"></span>
+
     <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
         <ul fxLayout fxLayoutGap="15px" class="navigation-items">
             <li>
-                <a routerLink="/owner">Owner Actions</a>
-            </li>
-            <li>
-                <a routerLink="/account">Account Actions</a>
-            </li>
+                <a style="margin-right: 1em;">{{currentUser.username}}</a>
+                <a style="margin-right: 1em;" (click)="logout()">Sair</a>
+            </li>           
         </ul>
     </div>
 </mat-toolbar>

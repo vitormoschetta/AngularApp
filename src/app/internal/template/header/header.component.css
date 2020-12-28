@@ -23,31 +23,6 @@ mat-toolbar{
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-.header {
-    background-color:#0F7AE5;
-    color: #F8F9FA;
-}
-
-.header .toggle {
-    padding-left: 10px;
-}
-
-.header .logo {
-    padding-left: 1em;
-    text-decoration: none;
-    color: white;
-}
-
 .spacer {
     flex: 1 1 auto;
 }
