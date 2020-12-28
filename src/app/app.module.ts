@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePt);
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -18,19 +20,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
-import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import localePt from '@angular/common/locales/pt';
-import { registerLocaleData } from '@angular/common';
 import { ExternalModule } from './external/external.module';
 import { InternalModule } from './internal/internal.module';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 
-registerLocaleData(localePt);
-
+import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 export const customCurrencyMaskConfig = {
   align: "left",
   allowNegative: true,
@@ -50,11 +47,11 @@ export const customCurrencyMaskConfig = {
   declarations: [
     AppComponent   
   ],
-  imports: [
-    BrowserModule,
+  imports: [    
     ExternalModule,
-    InternalModule,
-    AppRoutingModule,
+    InternalModule,  
+    AppRoutingModule,      
+    BrowserModule,    
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
@@ -98,4 +95,6 @@ export const customCurrencyMaskConfig = {
   ],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

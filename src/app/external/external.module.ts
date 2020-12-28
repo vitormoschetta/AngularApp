@@ -1,11 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ExternalComponent } from './external.component';
-import { ExternalRoutingModule } from './external-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,6 +15,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
+import { ExternalRoutingModule } from './external-routing.module';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ExternalComponent } from './external.component';
 
 
 @NgModule({
@@ -31,8 +30,8 @@ import { MatSortModule } from '@angular/material/sort';
     RegisterComponent,        
   ],
   imports: [
-    CommonModule,
-    ExternalRoutingModule,    
+    CommonModule,    
+    ExternalRoutingModule,      
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
@@ -53,6 +52,7 @@ import { MatSortModule } from '@angular/material/sort';
     HomeComponent,
     LoginComponent,
     RegisterComponent,   
-  ]
+  ],
+  
 })
 export class ExternalModule { }

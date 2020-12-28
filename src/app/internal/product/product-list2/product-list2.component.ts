@@ -12,6 +12,7 @@ import { ProductDataSource } from './product-list2-datasource';
   templateUrl: './product-list2.component.html',
   styleUrls: ['./product-list2.component.css', '../product.component.css']
 })
+
 export class ProductList2Component implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator
   @ViewChild(MatSort) sort: MatSort

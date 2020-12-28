@@ -11,10 +11,10 @@ import { UsersComponent } from './users/users.component';
 
 const internalRoutes: Routes = [ 
     { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
+    { path: 'product', component: ProductComponent, canActivate: [AuthGuard] },
     { path: 'product/delete/:id', component: ProductDeleteComponent, canActivate: [AuthGuard] },
     { path: 'product/update/:id', component: ProductUpdateComponent, canActivate: [AuthGuard] },
-    { path: 'product/create', component: ProductCreateComponent, canActivate: [AuthGuard] },
-    { path: 'product', component: ProductComponent, canActivate: [AuthGuard] },
+    { path: 'product/create', component: ProductCreateComponent, canActivate: [AuthGuard] },    
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'unauthorized', component: UnauthorizedComponent, canActivate: [AuthGuard] },
 ];
