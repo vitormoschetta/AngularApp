@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-
 html, body { 
     height: 100%; 
 }
@@ -14,6 +13,10 @@ body {
 .error-snackbar {
     background:#E35E6B;
     color: white;
+}
+
+.alert {
+    color: #E35E6B;
 }
 
 .icon-edit {    
@@ -60,6 +63,5 @@ body {
 .pad-right-1 {
     padding-right: 1em;
 }
-
 
 
