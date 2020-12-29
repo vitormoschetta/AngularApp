@@ -1,27 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 import { DataResult } from 'src/app/models/dataResult';
-import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { NotifyService } from 'src/app/services/notify.service';
-import { UserService } from 'src/app/services/user.service';
+import { MustMatch } from '../../_helpers/must-match.validator';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {  
+export class RegisterComponent implements OnInit {
   dataResult: DataResult
   form: FormGroup
-  loading = false
-  submitted = false
+  submitted: boolean = false
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,    
+    private router: Router,
     private authService: AuthService,
     private notify: NotifyService
   ) {
@@ -37,11 +34,10 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    
-    if (this.form.invalid) 
-      return;
-        
-    this.loading = true;
+
+    if (this.form.invalid)
+      return
+
     this.authService
       .register(this.frm.username.value, this.frm.password.value)
       .subscribe(
@@ -63,7 +59,7 @@ export class RegisterComponent implements OnInit {
       this.notify.ShowMessageError(this.dataResult.message, 2000)
   }
 
-  
+
   createForm() {
     this.form = this.fb.group({
       username: [
@@ -77,6 +73,7 @@ export class RegisterComponent implements OnInit {
         '',
         Validators.compose([
           Validators.required,
+          Validators.minLength(4)
         ])
       ],
       confirmPassword: [
@@ -84,9 +81,12 @@ export class RegisterComponent implements OnInit {
         Validators.compose([
           Validators.required,
         ])
-      ]
-    });
+      ],
+    },
+      {
+        validator: MustMatch('password', 'confirmPassword')
+      });
   }
-  
+
   get frm() { return this.form.controls; }
 }

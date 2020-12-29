@@ -4,15 +4,16 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataResult } from '../models/dataResult';
 import { User } from '../models/user';
+import { AuthService } from './auth.service';
 import { NotifyService } from './notify.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl: string = `${environment.baseUrl}/user`
+  baseUrl: string = `${environment.baseUrl}/user`  
 
-  constructor(private http: HttpClient, private notify: NotifyService) { }
+  constructor(private http: HttpClient, private notify: NotifyService, private authService: AuthService) { }
 
   getAll() {
     return this.http.get<User[]>(`${this.baseUrl}/getall`);
@@ -26,9 +27,9 @@ export class UserService {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
-  updatePassword(username: string, password: string, newPassword: string): Observable<DataResult> {
+  updatePassword(password: string, newPassword: string): Observable<DataResult> {
     return this.http.post<DataResult>(`${this.baseUrl}/updatePassword`,
-      { username: username, password: password, newPassword: newPassword });
+      { username: this.authService.currentUserName, password: password, newPassword: newPassword });
   }
 
   ShowMessageSuccess(message: string, duration: number): void {

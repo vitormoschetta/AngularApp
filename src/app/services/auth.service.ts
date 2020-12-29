@@ -26,6 +26,10 @@ export class AuthService {
     return this.currentUserSubject.value
   }
 
+  public get currentUserName(): string {     // <-- recuperar nome do usuario logado
+    return this.currentUserSubject.value.username
+  }
+
 
   login(username, password): Observable<UserResult> {
     return this.http.post<UserResult>(`${this.baseUrl}/Login`, { username, password })
