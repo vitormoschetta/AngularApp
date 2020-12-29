@@ -6,7 +6,7 @@
             <mat-label>Nome do Produto</mat-label>
             <input matInput formControlName="name">
             <mat-error *ngIf="submitted && frm.name.invalid">
-                <p class="alert">Nome deve conter no mínimo 4 caracteres.</p>
+                <p>Nome deve conter no mínimo 4 caracteres.</p>
             </mat-error>
         </mat-form-field>
 
@@ -14,10 +14,10 @@
             <mat-label>Preço (R$)</mat-label>
             <input matInput formControlName="price" currencyMask>
             <mat-error *ngIf="submitted && frm.price.invalid">
-                <p class="alert">Preço é requerido</p>
+                <p>Preço é requerido</p>
             </mat-error>
         </mat-form-field>
-        
+
         <br>
 
         <button type="submit" mat-raised-button class="button-add">

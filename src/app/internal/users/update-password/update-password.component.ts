@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DataResult } from 'src/app/models/dataResult';
 import { NotifyService } from 'src/app/services/notify.service';
 import { UserService } from 'src/app/services/user.service';
+import { MustMatch } from 'src/app/_helpers/must-match.validator';
 
 @Component({
   selector: 'app-update-password',
@@ -59,7 +60,7 @@ export class UpdatePasswordComponent implements OnInit {
     this.form.reset()
     this.submitted = false
   }
-  
+
 
   createForm() {
     this.form = this.fb.group({
@@ -82,7 +83,10 @@ export class UpdatePasswordComponent implements OnInit {
           Validators.required,
         ])
       ]
-    });
+    },
+      {
+        validator: MustMatch('password', 'confirmPassword')
+      });
   }
 
   get frm() { return this.form.controls; }

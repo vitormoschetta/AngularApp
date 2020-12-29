@@ -7,7 +7,7 @@
             <mat-label>Username</mat-label>
             <input matInput formControlName="username">
             <mat-error *ngIf="submitted && frm.username.invalid">
-                <p class="alert">Nome deve conter no mínimo 4 caracteres!</p>
+                <p>Nome deve conter no mínimo 4 caracteres!</p>
             </mat-error>
         </mat-form-field>
         
@@ -15,14 +15,14 @@
             <mat-label>Password</mat-label>
             <input type="password" matInput formControlName="password">
             <mat-error *ngIf="submitted && frm.password.invalid">
-                <p class="alert">Senha deve conter no mínimo 4 caracteres!</p>
+                <p>Senha deve conter no mínimo 4 caracteres!</p>
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Confirm Password</mat-label>
             <input type="password" matInput formControlName="confirmPassword">  
-            <mat-error *ngIf="submitted && frm.confirmPassword.errors" class="invalid-feedback">
+            <mat-error *ngIf="submitted && frm.confirmPassword.errors">
                 <p *ngIf="frm.confirmPassword.errors.required">Informe a confirmação da senha!</p>
                 <p *ngIf="frm.confirmPassword.errors.mustMatch">Senhas não conferem!</p>
             </mat-error>
