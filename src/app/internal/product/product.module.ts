@@ -17,7 +17,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 import { ProductRoutingModule } from './product.routing.module';
 import { ProductComponent } from './product.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
@@ -25,6 +24,8 @@ import { ProductUpdateComponent } from './product-update/product-update.componen
 import { ProductDeleteComponent } from './product-delete/product-delete.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductList2Component } from './product-list2/product-list2.component';
+
+import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 export const customCurrencyMaskConfig = {
   align: "left",
   allowNegative: true,

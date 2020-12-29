@@ -28,6 +28,11 @@ export class AuthGuard implements CanActivate {
       return false
     }
 
+    if (state.url.includes('users') && this.currentUser.role != "Admin") {
+      this.router.navigate(['/unauthorized'])
+      return false
+    }
+
     return true
   }
 }

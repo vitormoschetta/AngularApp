@@ -29,7 +29,7 @@ export class UserService {
 
   updatePassword(password: string, newPassword: string): Observable<DataResult> {
     return this.http.post<DataResult>(`${this.baseUrl}/updatePassword`,
-      { username: this.authService.currentUserName, password: password, newPassword: newPassword });
+      { username: this.authService.currentUserValue.username, password: password, newPassword: newPassword });
   }
 
   ShowMessageSuccess(message: string, duration: number): void {

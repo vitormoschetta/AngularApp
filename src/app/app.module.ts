@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import localePt from '@angular/common/locales/pt';
@@ -30,6 +30,7 @@ import { ProductModule } from './internal/product/product.module';
 import { UsersModule } from './internal/users/users.module';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { AuthInterceptorService }  from './services/auth-interceptor.service';
 
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 export const customCurrencyMaskConfig = {
@@ -46,6 +47,7 @@ export const customCurrencyMaskConfig = {
   max: null,
   inputMode: CurrencyMaskInputMode.FINANCIAL
 };
+
 
 @NgModule({
   declarations: [
@@ -76,7 +78,7 @@ export const customCurrencyMaskConfig = {
     MatPaginatorModule,
     MatSortModule,   
     MatTabsModule,
-    MatMenuModule,
+    MatMenuModule,  
   ],
   exports: [
     MatToolbarModule,
@@ -93,14 +95,22 @@ export const customCurrencyMaskConfig = {
     MatSortModule,   
     MatTabsModule,
     MatMenuModule,
+    
   ],
   providers: [
     AuthService,
+    AuthInterceptorService,
     AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'
-    }
+    },
+    
     
   ],
   bootstrap: [AppComponent]
