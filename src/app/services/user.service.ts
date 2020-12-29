@@ -11,7 +11,7 @@ import { NotifyService } from './notify.service';
 })
 export class UserService {
   baseUrl: string = `${environment.baseUrl}/user`
-  
+
   constructor(private http: HttpClient, private notify: NotifyService) { }
 
   getAll() {
@@ -24,6 +24,11 @@ export class UserService {
 
   delete(id: number) {
     return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  updatePassword(username: string, password: string, newPassword: string): Observable<DataResult> {
+    return this.http.post<DataResult>(`${this.baseUrl}/updatePassword`,
+      { username: username, password: password, newPassword: newPassword });
   }
 
   ShowMessageSuccess(message: string, duration: number): void {

@@ -17,12 +17,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { InternalComponent } from './internal.component';
-import { InternalRoutingModule } from './internal.routing.module';
-import { HeaderComponent } from './template/header/header.component';
-import { NavComponent } from './template/nav/nav.component';
-import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { UsersComponent } from './users.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { UsersRoutingModule } from './users.routing.module';
 
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 export const customCurrencyMaskConfig = {
@@ -41,12 +38,9 @@ export const customCurrencyMaskConfig = {
 };
 
 @NgModule({
-  declarations: [
-    InternalComponent,    
-    HeaderComponent,
-    NavComponent,
-    UnauthorizedComponent,    
-    DashboardComponent,             
+  declarations: [   
+    UsersComponent,    
+    UpdatePasswordComponent,
   ],
   imports: [
     CommonModule,        
@@ -65,17 +59,14 @@ export const customCurrencyMaskConfig = {
     MatIconModule,
     MatPaginatorModule,
     MatSortModule,   
-    MatMenuModule,
-    InternalRoutingModule,    
+    MatMenuModule,    
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
+    UsersRoutingModule,
   ],
-  exports: [
-    InternalComponent,
-    HeaderComponent,
-    NavComponent,
-    UnauthorizedComponent,    
-    DashboardComponent,               
+  exports: [    
+    UsersComponent, 
+    UpdatePasswordComponent,         
   ]
 })
 
-export class InternalModule { }
+export class UsersModule { }

@@ -22,10 +22,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
 import { ExternalModule } from './external/external.module';
 import { InternalModule } from './internal/internal.module';
+import { ProductModule } from './internal/product/product.module';
+import { UsersModule } from './internal/users/users.module';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -51,7 +53,9 @@ export const customCurrencyMaskConfig = {
   ],
   imports: [    
     ExternalModule,
-    InternalModule,  
+    InternalModule,   
+    ProductModule,   
+    UsersModule,
     AppRoutingModule,      
     BrowserModule,    
     BrowserAnimationsModule,

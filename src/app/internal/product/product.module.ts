@@ -17,14 +17,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { InternalComponent } from './internal.component';
-import { InternalRoutingModule } from './internal.routing.module';
-import { HeaderComponent } from './template/header/header.component';
-import { NavComponent } from './template/nav/nav.component';
-import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
+import { ProductRoutingModule } from './product.routing.module';
+import { ProductComponent } from './product.component';
+import { ProductCreateComponent } from './product-create/product-create.component';
+import { ProductUpdateComponent } from './product-update/product-update.component';
+import { ProductDeleteComponent } from './product-delete/product-delete.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductList2Component } from './product-list2/product-list2.component';
 export const customCurrencyMaskConfig = {
   align: "left",
   allowNegative: true,
@@ -41,15 +41,16 @@ export const customCurrencyMaskConfig = {
 };
 
 @NgModule({
-  declarations: [
-    InternalComponent,    
-    HeaderComponent,
-    NavComponent,
-    UnauthorizedComponent,    
-    DashboardComponent,             
+  declarations: [  
+    ProductComponent,           
+    ProductCreateComponent,
+    ProductUpdateComponent,
+    ProductDeleteComponent,    
+    ProductListComponent,
+    ProductList2Component,   
   ],
   imports: [
-    CommonModule,        
+    CommonModule,         
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
@@ -65,17 +66,18 @@ export const customCurrencyMaskConfig = {
     MatIconModule,
     MatPaginatorModule,
     MatSortModule,   
-    MatMenuModule,
-    InternalRoutingModule,    
+    MatMenuModule,    
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
+    ProductRoutingModule,       
   ],
-  exports: [
-    InternalComponent,
-    HeaderComponent,
-    NavComponent,
-    UnauthorizedComponent,    
-    DashboardComponent,               
+  exports: [ 
+    ProductComponent,           
+    ProductCreateComponent,
+    ProductUpdateComponent,
+    ProductDeleteComponent,   
+    ProductListComponent, 
+    ProductList2Component,        
   ]
 })
 
-export class InternalModule { }
+export class ProductModule { }

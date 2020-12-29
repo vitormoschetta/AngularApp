@@ -12,10 +12,10 @@
         {{currentUser.username}}
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <a routerLink="/updatePassword" mat-menu-item>
             <mat-icon>lock</mat-icon>
             Alterar senha
-        </button>
+        </a>
         <button mat-menu-item (click)="logout()">
             <mat-icon>trending_flat</mat-icon>
             Sair
