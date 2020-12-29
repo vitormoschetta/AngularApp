@@ -85,7 +85,7 @@ export class UpdatePasswordComponent implements OnInit {
       ]
     },
       {
-        validator: MustMatch('password', 'confirmPassword')
+        validator: MustMatch('newPassword', 'newPasswordConfirm')
       });
   }
 
