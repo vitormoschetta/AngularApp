@@ -1,0 +1,86 @@
+@media only screen and (min-width: 769px) {
+    .content {
+        margin-top: 3em;
+    }
+
+    mat-card {   
+        width: 340px; 
+        margin: auto;
+        text-align: center;
+    }
+    
+    mat-card-title {    
+        padding-top: 1em;
+        margin-bottom: 2em;
+        font-size: 20px;    
+    }
+    
+    mat-form-field { 
+        font-size: 16px;   
+        margin: auto;
+        width: 90%;
+        display: block;  
+    }
+    
+    .buttons {
+        margin-top: 2em;
+        width: 100%;
+        display: block;
+        margin-left:auto;
+        margin-right:auto;  
+    }
+    
+    button {
+        margin: 20px 15px;
+        height:40px !important;
+        width:100px !important;
+        font-size:16px !important;
+    }    
+    
+}
+
+@media only screen and (max-width: 768px) {
+
+    mat-card {   
+        width: 250px; 
+        margin: auto;
+        text-align: center;
+    }
+
+    mat-card-title {    
+        font-size: 18px;            
+    }
+
+    mat-form-field { 
+        font-size: 18px;           
+        width: 100%;
+        display: block;          
+    }
+
+    .buttons {    
+        margin-top: -1em;
+        width: 100%;
+        display: block;
+        margin-left:auto;
+        margin-right:auto;  
+    }
+
+    button {
+        margin: 20px 15px;
+        height:40px !important;
+        width:90px !important;
+        font-size:16px !important;
+        font-size: 14px !important;    
+    }    
+}
+
+a {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: rgb(163, 159, 159);
+}
+
+a:hover {    
+    color: rgb(61, 59, 59);
+}

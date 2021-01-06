@@ -10,6 +10,10 @@ body {
     background-color: #EEEEEE;    
 }
 
+.router-link-active {
+    background-color: #cac6c6;
+}
+
 .error-snackbar {
     background:#E35E6B;
     color: white;

@@ -1,0 +1,49 @@
+<div class="content">
+    <mat-card>
+        <a [routerLink]="['/home']" >
+            <mat-icon>close</mat-icon>
+        </a>
+
+        <mat-card-title>Cadastro de Usuário</mat-card-title>        
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <mat-form-field>
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="username" maxlength="20">
+                <mat-error *ngIf="submitted && f.username.invalid">
+                    <p>Informe pelo menos 4 caracteres!</p>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Senha</mat-label>
+                <input type="password" matInput formControlName="password">
+                <mat-error *ngIf="submitted && f.password.invalid">
+                    <p>Mínimo de 6 digitos!</p>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Confirmação da Senha</mat-label>
+                <input type="password" matInput formControlName="passwordConfirm">
+                <mat-error *ngIf="submitted && f.passwordConfirm.errors">
+                    <p *ngIf="f.passwordConfirm.errors.required">Informe a confirmação da senha!</p>
+                    <p *ngIf="f.passwordConfirm.errors.mustMatch">Senhas não conferem!</p>
+                </mat-error>
+            </mat-form-field>
+
+
+            <div class="buttons">
+                <button type="submit" mat-raised-button class="button-add">
+                    Confirmar
+                </button>
+
+                <button mat-raised-button routerLink="/login">
+                    Login
+                </button>
+            </div>            
+        </form>
+    </mat-card>   
+
+</div>

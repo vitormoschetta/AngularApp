@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <div>
+        <button mat-icon-button (click)="onSidenavOpen()" class="toggle">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+
+    <span class="spacer"></span>
+
+    <button mat-button [matMenuTriggerFor]="menu" class="user">       
+        <mat-icon>perm_identity</mat-icon>
+        {{currentUser.username}}       
+    </button>
+    <mat-menu #menu="matMenu">
+        <a routerLink="/users/updatePassword" mat-menu-item>
+            <mat-icon>lock</mat-icon>
+            Alterar senha
+        </a>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>trending_flat</mat-icon>
+            Sair
+        </button>
+    </mat-menu>
+
+</mat-toolbar>

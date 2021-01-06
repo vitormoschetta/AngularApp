@@ -1,2 +1,18 @@
-<app-header></app-header>
-<app-nav></app-nav>
+<div *ngIf="!currentUser">
+    <router-outlet></router-outlet>
+</div>
+<div *ngIf="currentUser">
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav role="navigation">
+            <app-nav (sidenavClose)="sidenav.close()"></app-nav>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <app-header (sidenavOpen)="sidenav.toggle()"></app-header>
+            <main>
+                <router-outlet></router-outlet>
+            </main>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+
+

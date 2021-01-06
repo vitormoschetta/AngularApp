@@ -1,0 +1,31 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.navigation-items{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+mat-toolbar{
+    border-radius: 3px;
+}
+
+@media(max-width: 425px){
+    mat-toolbar{
+        border-radius: 0px;
+    }
+}
+
+.toggle .mat-icon {
+    font-size: 30px;
+}
+
+button .mat-icon {
+    font-size: 20px;
+}
+
+.user {
+    font-size: 12px;
+}

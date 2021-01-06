@@ -1,0 +1,16 @@
+mat-nav-list {
+    margin-top: 1em;
+}
+
+a:hover {
+  color: #3F51B5;
+}
+
+.nav-caption{
+    display: inline-block;
+    padding-left: 6px;
+}
+
+
+
+

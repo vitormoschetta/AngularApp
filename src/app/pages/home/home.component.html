@@ -1,7 +1,16 @@
-<mat-card class="home mat-elevation-z3">
-    <mat-card-title class="title">Bem vindo!</mat-card-title>
-    <mat-card-subtitle class="subtitle">
-        Sistema de exemplo CRUD com Angular.
-    </mat-card-subtitle>  
-</mat-card>
+<div class="home">
+    <h1>Angular 10</h1>
+
+    <h4>Vitor Moschetta</h4>
+
+    <a [routerLink]="['/login']" routerLinkActive="router-link-active" mat-raised-button class="button-add"
+        style="margin-right: 2em;">
+        Login
+    </a>
+
+    <a [routerLink]="['/register']" routerLinkActive="router-link-active" mat-raised-button>
+        Registrar
+    </a>
+</div>
+
 

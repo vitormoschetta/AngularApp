@@ -1,0 +1,40 @@
+<div class="content">
+    <mat-card>
+        <a [routerLink]="['/home']" >
+            <mat-icon>close</mat-icon>
+        </a>
+        
+        <mat-card-title>Login</mat-card-title>
+    
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+            <mat-form-field class="full-width-input">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username">
+                <mat-error *ngIf="submitted && f.username.invalid">
+                    <p>Informe nome de usuário</p>
+                </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field class="full-width-input">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password">
+                <mat-error *ngIf="submitted && f.password.invalid">
+                    <p>Informe a senha!</p>
+                </mat-error>
+            </mat-form-field>
+    
+            <div class="buttons">
+                <button type="submit" mat-raised-button class="button-add">
+                    Login
+                </button>
+    
+                <button mat-raised-button routerLink="/register">
+                    Register
+                </button>                           
+            </div>               
+        </form>
+    </mat-card>
+</div>
+
+
