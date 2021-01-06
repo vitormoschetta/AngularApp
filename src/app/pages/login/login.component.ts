@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   showMessage() {
     if (this.dataResult.success) {
-      this.notify.ShowMessageSuccessBottomCenter(`Olá ${this.dataResult.object.userName}!`, 3000)
+      this.notify.ShowMessageSuccessBottomCenter(`Olá ${this.dataResult.object.username}!`, 3000)
       this.router.navigate(['/dashboard'])
     }
     else
