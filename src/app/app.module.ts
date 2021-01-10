@@ -35,6 +35,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UserModule } from './pages/user/user.module';
 import { HeaderComponent } from './template/header/header.component';
 import { NavComponent } from './template/nav/nav.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 export const customCurrencyMaskConfig = {
   align: "left",
   allowNegative: true,
@@ -82,7 +84,8 @@ export const customCurrencyMaskConfig = {
     MatPaginatorModule,
     MatSortModule,   
     MatTabsModule,
-    MatMenuModule,    
+    MatMenuModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),    
   ],
   exports: [
     MatToolbarModule,
