@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserRepository } from 'src/app/mock/userRepository';
 import { DataResult } from 'src/app/models/dataResult';
 import { User } from 'src/app/models/user';
+import { UserRepositoryService } from '../mock/user-repository.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  userRepository: UserRepository
+export class AuthService {  
   private currentUserSubject: BehaviorSubject<User>
   public currentUser: Observable<User>
 
-  constructor() {
-    this.userRepository = new UserRepository()
+  constructor(private repository: UserRepositoryService) {    
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')))
     this.currentUser = this.currentUserSubject.asObservable()
   }
 
   login(username: string, password: string): DataResult {
-    let data = this.userRepository.login(username, password)
+    let data = this.repository.login(username, password)
     if (data != null) {
       localStorage.setItem('currentUser', JSON.stringify(data))
       this.currentUserSubject.next(data)
