@@ -19,6 +19,8 @@ export class RegisterService {
     let user = new User()
     user.username = userRegister.username
     user.password = userRegister.password
+    user.active = true
+    user.role = 'user'
     this.repository.register(user)
     return new DataResult(true, 'Castro realizado com sucesso! ', userRegister)
   }
