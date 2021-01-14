@@ -37,6 +37,7 @@ import { HeaderComponent } from './template/header/header.component';
 import { NavComponent } from './template/nav/nav.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 export const customCurrencyMaskConfig = {
   align: "left",
   allowNegative: true,
@@ -61,6 +62,7 @@ export const customCurrencyMaskConfig = {
     DashboardComponent,    
     HeaderComponent,
     NavComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     UserModule,

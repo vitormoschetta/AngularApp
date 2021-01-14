@@ -20,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { UserComponent } from './user.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { UserRoutingModule } from './user.routing.module';
+import { UpdateStatusComponent } from './update-status/update-status.component';
 
 
 
@@ -27,7 +28,7 @@ import { UserRoutingModule } from './user.routing.module';
 @NgModule({
   declarations: [
     UserComponent, 
-    UpdatePasswordComponent
+    UpdatePasswordComponent, UpdateStatusComponent
   ],
   imports: [
     CommonModule,

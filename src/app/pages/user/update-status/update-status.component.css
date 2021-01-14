@@ -1,0 +1,15 @@
+table {
+    width: 100%;     
+}
+
+.mat-cell {
+    font-size: 13px;
+}
+
+a :hover {
+    cursor: pointer;
+}
+
+.inativo {
+    color: red;
+}

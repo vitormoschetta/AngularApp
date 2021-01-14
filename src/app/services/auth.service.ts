@@ -19,6 +19,9 @@ export class AuthService {
   login(username: string, password: string): DataResult {
     let data = this.repository.login(username, password)
     if (data != null) {
+      if (!data.active)
+        return new DataResult(false, 'Usuário inativo! ', data)
+
       localStorage.setItem('currentUser', JSON.stringify(data))
       this.currentUserSubject.next(data)
       return new DataResult(true, 'Login efetuado! ', data)

@@ -9,24 +9,35 @@ export class UserRepositoryService {
 
   constructor() {
       this.list = [
-          { id: '1', username: 'admin', password: "123456" },
-          { id: '2', username: 'user', password: "123456" },
+          { username: 'admin', role: 'admin', password: "123456", active: true },
+          { username: 'user', role: 'user', password: "123456", active: true },
+          { username: 'other', role: 'user', password: "123456", active: false },
       ];
   }
 
-  register(user: User): void {
-      user.id = (this.list.length + 1).toString()
+  getAll(): User[] {
+      return this.list
+  }
+
+  register(user: User): void {      
       this.list.push(user)
   }
 
   login(username: string, password: string): User {
-      return this.list.find(x => x.username == username && x.password == password)
+      return this.list.find(
+          x => x.username == username && 
+          x.password == password)
   }
 
   updatePassword(username: string, newPassword: string): void {
       let item = this.list.find(x => x.username == username)
       item.password = newPassword
   }
+
+  updateStatus(username: string, active: boolean): void {
+    let item = this.list.find(x => x.username == username)
+    item.active = active
+}
 
   exist(username: string): boolean {
       var item = this.list.find(x => x.username == username)
