@@ -3,18 +3,18 @@
         <mat-icon>dashboard</mat-icon>
         <span class="nav-caption">Dashboard</span>
     </a>
-    <a mat-list-item [routerLink]="['/equipes']" routerLinkActive="router-link-active" (click)="onSidenavClose()">
+    <a mat-list-item [routerLink]="['/products']" routerLinkActive="router-link-active" (click)="onSidenavClose()">
         <mat-icon>markunread_mailbox</mat-icon>
         <span class="nav-caption">Produtos</span>
     </a>    
     <mat-list-item [matMenuTriggerFor]="menu"> 
-        <mat-icon>account_box</mat-icon>
+        <mat-icon>supervisor_account</mat-icon>
         <span class="nav-caption">Usuarios</span>
     </mat-list-item>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="['/users/pedido']" routerLinkActive="router-link-active"
-            (click)="onSidenavClose()">Atualizar Perfil</button>
         <button mat-menu-item [routerLink]="['/users/updateStatus']" routerLinkActive="router-link-active"
             (click)="onSidenavClose()">Ativar / Desativar</button>
+        <button mat-menu-item [routerLink]="['/users/pedido']" routerLinkActive="router-link-active"
+            (click)="onSidenavClose()">Atualizar Perfil</button>        
     </mat-menu>
 </mat-nav-list>

@@ -38,6 +38,7 @@ import { NavComponent } from './template/nav/nav.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
+import { ProductModule } from './pages/product/product.module';
 export const customCurrencyMaskConfig = {
   align: "left",
   allowNegative: true,
@@ -66,6 +67,7 @@ export const customCurrencyMaskConfig = {
   ],
   imports: [
     UserModule,
+    ProductModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

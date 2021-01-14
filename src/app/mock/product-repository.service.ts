@@ -51,7 +51,8 @@ export class ProductRepositoryService {
   }
 
   getAll(): Product[] {
-    return this.orderByName(this.list)
+    return this.list
+    // return this.orderByName(this.list)
   }
 
   getById(id: string): Product {
