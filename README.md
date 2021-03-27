@@ -7,6 +7,11 @@
 
 
 
+## Install Tools
+- Install npm
+- Install Node
+- sudo npm install -g @angular/cli@10.1.3
+
 ## Add App
 ```
 ng new <app-name> --minimal
