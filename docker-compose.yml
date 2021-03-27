@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  api:
+    container_name: angular_app
+    build:
+      context: .
+      network: host    
+    ports:
+      - 8081:80
+    expose:
+      - 8081
+   
